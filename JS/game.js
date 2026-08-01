@@ -85,20 +85,17 @@ function handleProductSelection(event) {
   const gameId = button.dataset.gameId;
   const productId = button.dataset.productId;
 
-  sessionStorage.setItem(
-    "zengamesSelection",
-    JSON.stringify({
-      gameId,
-      productId,
-    }),
-  );
-
-  console.log("Selected package:", {
+  const selection = {
     gameId,
     productId,
-  });
+  };
 
-  button.textContent = "Package Selected";
+  sessionStorage.setItem(
+    "zengamesSelection",
+    JSON.stringify(selection),
+  );
+
+  window.location.href = "checkout.html";
 }
 
 function initializeGamePage() {
