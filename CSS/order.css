@@ -1,0 +1,232 @@
+.order-page {
+  min-height: calc(100vh - 130px);
+  padding-block: 64px 80px;
+}
+
+.order-page__container {
+  max-width: 840px;
+}
+
+.order-heading {
+  text-align: center;
+}
+
+.order-heading h1 {
+  margin-block: 4px 12px;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
+.order-heading__eyebrow {
+  margin: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.order-search-card {
+  margin-top: 32px;
+  padding: 28px;
+  background-color: #ffffff;
+  border: 1px solid #e2e5e9;
+  border-radius: 16px;
+}
+
+.order-search-card label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.order-search-control {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+}
+
+.order-search-control input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #aeb4bc;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+.order-search-control input:focus {
+  outline: 3px solid #d5d8dc;
+  border-color: #202124;
+}
+
+.order-search-hint {
+  margin-block: 12px 0;
+  color: #60646c;
+  font-size: 0.875rem;
+}
+
+.search-message {
+  min-height: 24px;
+  margin-block: 12px 0;
+  font-weight: 700;
+}
+
+.order-result {
+  margin-top: 32px;
+}
+
+.order-detail-card,
+.order-not-found {
+  padding: 28px;
+  background-color: #ffffff;
+  border: 1px solid #e2e5e9;
+  border-radius: 16px;
+}
+
+.order-detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.order-detail-header h2 {
+  margin: 0;
+}
+
+.order-detail-header__label {
+  margin-block: 0 4px;
+  color: #60646c;
+}
+
+.status-badge {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background-color: #e8eaed;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.status-badge[data-status='COMPLETED'] {
+  background-color: #dff4e5;
+  color: #176b32;
+}
+
+.status-badge[data-status='PROCESSING'],
+.status-badge[data-status='PAID'] {
+  background-color: #fff2cc;
+  color: #765600;
+}
+
+.status-badge[data-status='PAYMENT_FAILED'],
+.status-badge[data-status='FULFILLMENT_FAILED'],
+.status-badge[data-status='EXPIRED'] {
+  background-color: #fce2e2;
+  color: #9b1c1c;
+}
+
+.order-information {
+  margin-block: 28px 0;
+}
+
+.order-information div {
+  padding-block: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid #e2e5e9;
+}
+
+.order-information dt {
+  color: #60646c;
+}
+
+.order-information dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 700;
+}
+
+.order-information__total {
+  font-size: 1.125rem;
+}
+
+.order-timeline {
+  margin-top: 32px;
+}
+
+.timeline-list {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 14px;
+  padding-bottom: 24px;
+}
+
+.timeline-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  bottom: 0;
+  left: 7px;
+  width: 2px;
+  background-color: #d5d8dc;
+}
+
+.timeline-item__marker {
+  position: relative;
+  z-index: 1;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  border-radius: 50%;
+  background-color: #202124;
+}
+
+.timeline-item__content {
+  display: grid;
+  gap: 4px;
+}
+
+.timeline-item__content span {
+  color: #60646c;
+  font-size: 0.875rem;
+}
+
+.order-not-found {
+  text-align: center;
+}
+
+.order-not-found h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 600px) {
+  .order-search-control {
+    grid-template-columns: 1fr;
+  }
+
+  .order-detail-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .order-information div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .order-information dd {
+    text-align: left;
+  }
+
+  .order-search-card,
+  .order-detail-card,
+  .order-not-found {
+    padding: 20px;
+  }
+}
