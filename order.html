@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Track Order | ZenGames</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/order.css" />
+
+    <script src="js/order.js" type="module"></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="index.html">ZenGames</a>
+
+        <nav aria-label="Main navigation">
+          <a href="index.html#games">Games</a>
+          <a href="order.html" aria-current="page">Check Order</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="order-page">
+      <div class="container order-page__container">
+        <header class="order-heading">
+          <p class="order-heading__eyebrow">Order tracking</p>
+
+          <h1>Check your order</h1>
+
+          <p>
+            Enter your ZenGames order code to view its current status.
+          </p>
+        </header>
+
+        <section class="order-search-card">
+          <form id="order-search-form" novalidate>
+            <label for="order-code">Order code</label>
+
+            <div class="order-search-control">
+              <input
+                id="order-code"
+                name="orderCode"
+                type="text"
+                placeholder="Example: ZG-20260802-A1B2"
+                autocomplete="off"
+                required
+              />
+
+              <button type="submit">
+                Check Order
+              </button>
+            </div>
+
+            <p class="order-search-hint">
+              Try the sample code:
+              <strong>ZG-20260802-A1B2</strong>
+            </p>
+
+            <p
+              id="search-message"
+              class="search-message"
+              aria-live="polite"
+            ></p>
+          </form>
+        </section>
+
+        <section
+          id="order-result"
+          class="order-result"
+          aria-live="polite"
+          hidden
+        ></section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="current-year"></span> ZenGames</p>
+      </div>
+    </footer>
+  </body>
+</html>
