@@ -128,9 +128,48 @@ button:focus-visible {
 
 .game-list {
   margin-top: 24px;
-  padding: 24px;
-  border: 1px dashed #aeb4bc;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e2e5e9;
   border-radius: 12px;
+}
+
+.game-card__icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background-color: #e8eaed;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.game-card__content {
+  flex-grow: 1;
+}
+
+.game-card__title {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.game-card__publisher {
+  margin-block: 4px 0;
+  color: #60646c;
+}
+
+.game-card__button {
+  width: 100%;
 }
 
 .site-footer {
