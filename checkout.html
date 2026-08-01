@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Checkout | ZenGames</title>
+
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/checkout.css" />
+
+    <script src="JS/checkout.js" type="module"></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="index.html">ZenGames</a>
+
+        <nav aria-label="Main navigation">
+          <a href="index.html#games">Games</a>
+          <a href="index.html#orders">Check Order</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="checkout-page">
+      <div class="container">
+        <a
+          id="back-to-game"
+          class="back-link"
+          href="index.html#games"
+        >
+          ← Back to game
+        </a>
+
+        <section id="checkout-root" aria-live="polite">
+          <p>Loading checkout...</p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="current-year"></span> ZenGames</p>
+      </div>
+    </footer>
+  </body>
+</html>
