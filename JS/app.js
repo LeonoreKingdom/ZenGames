@@ -1,36 +1,29 @@
+import { games } from "./data/game.js";
+
 const exploreButton = document.querySelector("#explore-button");
 const appStatus = document.querySelector("#app-status");
 const currentYear = document.querySelector("#current-year");
 const gameList = document.querySelector("#game-list");
 
-const games = [
-  {
-    id: "mobile-legends",
-    name: "Mobile Legends",
-    publisher: "Moonton",
-    initials: "ML",
-  },
-  {
-    id: "valorant",
-    name: "Valorant",
-    publisher: "Riot Games",
-    initials: "VL",
-  },
-  {
-    id: "genshin-impact",
-    name: "Genshin Impact",
-    publisher: "HoYoverse",
-    initials: "GI",
-  },
-];
+function formatCurrency(amount) {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    maximumFractionDigits: 0,
+  }).format(amount);
+}
 
 function updateCurrentYear() {
   currentYear.textContent = new Date().getFullYear();
 }
 
 function createGameCard(game) {
+  const startingPrice = Math.min(
+    ...game.products.map((product) => product.price),
+  );
+
   return `
-    <article class="game-card" data-game-id="${game.id}">
+    <article class="game-card">
       <div class="game-card__icon" aria-hidden="true">
         ${game.initials}
       </div>
@@ -38,27 +31,27 @@ function createGameCard(game) {
       <div class="game-card__content">
         <h3 class="game-card__title">${game.name}</h3>
         <p class="game-card__publisher">${game.publisher}</p>
+        <p class="game-card__price">
+          Starting from ${formatCurrency(startingPrice)}
+        </p>
       </div>
 
-      <button
+      <a
         class="game-card__button"
-        type="button"
-        data-game-id="${game.id}"
+        href="game.html?game=${encodeURIComponent(game.id)}"
       >
         Select Game
-      </button>
+      </a>
     </article>
   `;
 }
 
 function renderGames() {
-  const gameCards = games.map(createGameCard);
-
-  gameList.innerHTML = gameCards.join("");
+  gameList.innerHTML = games.map(createGameCard).join("");
 }
 
 function handleExploreButtonClick() {
-  appStatus.textContent = "JavaScript is connected successfully.";
+  appStatus.textContent = "Choose one of the available games.";
 
   document.querySelector("#games").scrollIntoView({
     behavior: "smooth",
@@ -71,7 +64,7 @@ function initializeApp() {
 
   exploreButton.addEventListener("click", handleExploreButtonClick);
 
-  console.log("ZenGames frontend initialized.");
+  console.log("ZenGames home page initialized.");
 }
 
 initializeApp();

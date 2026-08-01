@@ -1,0 +1,106 @@
+.game-page {
+  min-height: calc(100vh - 130px);
+  padding-block: 48px 80px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 32px;
+  font-weight: 700;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.game-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 32px;
+  background-color: #ffffff;
+  border: 1px solid #e2e5e9;
+  border-radius: 16px;
+}
+
+.game-heading__icon {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background-color: #e8eaed;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.game-heading h1 {
+  margin-block: 4px 12px;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.game-heading__publisher {
+  margin: 0;
+  font-weight: 700;
+}
+
+.product-section {
+  margin-top: 48px;
+}
+
+.product-list {
+  margin-top: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.product-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e2e5e9;
+  border-radius: 12px;
+}
+
+.product-card h3,
+.product-card p {
+  margin: 0;
+}
+
+.product-card p {
+  margin-top: 6px;
+  font-weight: 700;
+}
+
+.not-found {
+  padding: 48px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 16px;
+}
+
+.not-found a {
+  display: inline-block;
+  margin-top: 16px;
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .game-heading {
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .product-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .product-card__button {
+    width: 100%;
+  }
+}
