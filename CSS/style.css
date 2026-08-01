@@ -170,6 +170,16 @@ button:focus-visible {
 
 .game-card__button {
   width: 100%;
+  display: block;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #202124;
+  color: #ffffff;
+}
+
+.game-card__button:hover {
+  opacity: 0.9;
 }
 
 .site-footer {
