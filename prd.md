@@ -1314,7 +1314,7 @@ Game selection
 
 Once that journey works, improve architecture and replace temporary components incrementally.
 
-The key design decision is the **vertical slice**: finish one realistic transaction end to end before expanding the catalog, authentication, administration, or infrastructure. This prevents the project from becoming a collection of disconnected tutorials.
+The key design decision is the **vertical slice**: finish one realistic transaction end to end before expanding the catalog, authentication, administration, or infrastructure. This prevents the project from becoming a collection of disconnected tutorials.****
 
 [1]: https://nodejs.org/api/http.html?utm_source=chatgpt.com "HTTP | Node.js v26.5.0 Documentation"
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules?utm_source=chatgpt.com "JavaScript modules - JavaScript | MDN"
