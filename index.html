@@ -17,7 +17,7 @@
 
         <nav aria-label="Main navigation">
           <a href="#games">Games</a>
-          <a href="#orders">Check Order</a>
+          <a href="order.html">Check Order</a>
         </nav>
       </div>
     </header>
@@ -49,9 +49,27 @@
 
       <section id="orders" class="order-section">
         <div class="container">
-          <h2>Check Order</h2>
+          <div class="quick-order-card">
+            <div>
+              <p class="eyebrow">Order tracking</p>
 
-          <p>Order tracking will be implemented later.</p>
+              <h2>Check your order</h2>
+
+              <p>Enter your ZenGames order code to view its current transaction status.</p>
+            </div>
+
+            <form id="quick-order-form" novalidate>
+              <label for="quick-order-code"> Order code </label>
+
+              <div class="quick-order-control">
+                <input id="quick-order-code" name="orderCode" type="text" placeholder="Example: ZG-20260803-A1B2" autocomplete="off" required />
+
+                <button type="submit">Track Order</button>
+              </div>
+
+              <p id="quick-order-message" class="quick-order-message" aria-live="polite"></p>
+            </form>
+          </div>
         </div>
       </section>
     </main>

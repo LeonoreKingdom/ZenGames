@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -31,9 +31,7 @@
 
           <h1>Check your order</h1>
 
-          <p>
-            Enter your ZenGames order code to view its current status.
-          </p>
+          <p>Enter your ZenGames order code to view its current status.</p>
         </header>
 
         <section class="order-search-card">
@@ -41,18 +39,9 @@
             <label for="order-code">Order code</label>
 
             <div class="order-search-control">
-              <input
-                id="order-code"
-                name="orderCode"
-                type="text"
-                placeholder="Example: ZG-20260802-A1B2"
-                autocomplete="off"
-                required
-              />
+              <input id="order-code" name="orderCode" type="text" placeholder="Example: ZG-20260802-A1B2" autocomplete="off" required />
 
-              <button type="submit">
-                Check Order
-              </button>
+              <button type="submit">Check Order</button>
             </div>
 
             <p class="order-search-hint">
@@ -60,20 +49,11 @@
               <strong>ZG-20260802-A1B2</strong>
             </p>
 
-            <p
-              id="search-message"
-              class="search-message"
-              aria-live="polite"
-            ></p>
+            <p id="search-message" class="search-message" aria-live="polite"></p>
           </form>
         </section>
 
-        <section
-          id="order-result"
-          class="order-result"
-          aria-live="polite"
-          hidden
-        ></section>
+        <section id="order-result" class="order-result" aria-live="polite" hidden></section>
       </div>
     </main>
 
