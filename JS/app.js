@@ -4,6 +4,9 @@ const exploreButton = document.querySelector('#explore-button');
 const appStatus = document.querySelector('#app-status');
 const currentYear = document.querySelector('#current-year');
 const gameList = document.querySelector('#game-list');
+const quickOrderForm = document.querySelector('#quick-order-form');
+const quickOrderCodeInput = document.querySelector('#quick-order-code');
+const quickOrderMessage = document.querySelector('#quick-order-message');
 
 function formatCurrency(amount) {
   return new Intl.NumberFormat('id-ID', {
@@ -56,11 +59,34 @@ function handleExploreButtonClick() {
   });
 }
 
+function normalizeOrderCode(orderCode) {
+  return orderCode.trim().toUpperCase();
+}
+
+function handleQuickOrderSubmit(event) {
+  event.preventDefault();
+
+  quickOrderMessage.textContent = '';
+
+  if (!quickOrderForm.checkValidity()) {
+    quickOrderMessage.textContent = 'Enter an order code before continuing.';
+
+    quickOrderForm.reportValidity();
+    return;
+  }
+
+  const orderCode = normalizeOrderCode(quickOrderCodeInput.value);
+
+  window.location.href = `order.html?code=${encodeURIComponent(orderCode)}`;
+}
+
 function initializeApp() {
   updateCurrentYear();
   renderGames();
 
   exploreButton.addEventListener('click', handleExploreButtonClick);
+
+  quickOrderForm.addEventListener('submit', handleQuickOrderSubmit);
 
   console.log('ZenGames home page initialized.');
 }

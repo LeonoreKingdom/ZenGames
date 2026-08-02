@@ -188,6 +188,55 @@ button:focus-visible {
   border-top: 1px solid #e2e5e9;
 }
 
+.quick-order-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 480px);
+  align-items: center;
+  gap: 48px;
+  padding: 32px;
+  background-color: #ffffff;
+  border: 1px solid #e2e5e9;
+  border-radius: 16px;
+}
+
+.quick-order-card h2 {
+  margin-block: 4px 12px;
+}
+
+.quick-order-card form {
+  display: grid;
+  gap: 8px;
+}
+
+.quick-order-card label {
+  font-weight: 700;
+}
+
+.quick-order-control {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+}
+
+.quick-order-control input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #aeb4bc;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+.quick-order-control input:focus {
+  outline: 3px solid #d5d8dc;
+  border-color: #202124;
+}
+
+.quick-order-message {
+  min-height: 24px;
+  margin: 0;
+  font-weight: 700;
+}
+
 /* Mobile */
 
 @media (max-width: 600px) {
@@ -200,5 +249,20 @@ button:focus-visible {
   .hero {
     padding-block: 64px;
     text-align: left;
+  }
+
+  .quick-order-card {
+    padding: 20px;
+  }
+
+  .quick-order-control {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .quick-order-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
