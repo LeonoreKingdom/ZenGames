@@ -7,27 +7,35 @@
     <title>Order Confirmation | ZenGames</title>
 
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/confirmation.css" />
+
+    <script src="js/confirmation.js" type="module"></script>
   </head>
 
   <body>
     <header class="site-header">
       <div class="container">
         <a class="brand" href="index.html">ZenGames</a>
+
+        <nav aria-label="Main navigation">
+          <a href="index.html#games">Games</a>
+          <a href="order.html">Check Order</a>
+        </nav>
       </div>
     </header>
 
-    <main>
-      <section class="hero">
-        <div class="container">
-          <p class="eyebrow">Checkout data saved</p>
-
-          <h1>Ready for confirmation</h1>
-
-          <p>The validated checkout draft has been saved. Order confirmation will be implemented in Cycle 3.</p>
-
-          <a class="game-card__button" href="checkout.html"> Return to checkout </a>
-        </div>
-      </section>
+    <main class="confirmation-page">
+      <div class="container confirmation-page__container">
+        <section id="confirmation-root" aria-live="polite">
+          <p>Loading order confirmation...</p>
+        </section>
+      </div>
     </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="current-year"></span> ZenGames</p>
+      </div>
+    </footer>
   </body>
 </html>
