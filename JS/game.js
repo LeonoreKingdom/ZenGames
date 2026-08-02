@@ -1,12 +1,12 @@
-import { findGameById } from "./data/game.js";
+import { findGameById } from './data/games.js';
 
-const gameDetail = document.querySelector("#game-detail");
-const currentYear = document.querySelector("#current-year");
+const gameDetail = document.querySelector('#game-detail');
+const currentYear = document.querySelector('#current-year');
 
 function formatCurrency(amount) {
-  return new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR",
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
     maximumFractionDigits: 0,
   }).format(amount);
 }
@@ -14,7 +14,7 @@ function formatCurrency(amount) {
 function getSelectedGameId() {
   const parameters = new URLSearchParams(window.location.search);
 
-  return parameters.get("game");
+  return parameters.get('game');
 }
 
 function createProductCard(gameId, product) {
@@ -57,9 +57,7 @@ function renderGame(game) {
       <h2>Select a top-up package</h2>
 
       <div class="product-list">
-        ${game.products
-          .map((product) => createProductCard(game.id, product))
-          .join("")}
+        ${game.products.map((product) => createProductCard(game.id, product)).join('')}
       </div>
     </section>
   `;
@@ -76,7 +74,7 @@ function renderNotFound() {
 }
 
 function handleProductSelection(event) {
-  const button = event.target.closest(".product-card__button");
+  const button = event.target.closest('.product-card__button');
 
   if (!button) {
     return;
@@ -90,12 +88,9 @@ function handleProductSelection(event) {
     productId,
   };
 
-  sessionStorage.setItem(
-    "zengamesSelection",
-    JSON.stringify(selection),
-  );
+  sessionStorage.setItem('zengamesSelection', JSON.stringify(selection));
 
-  window.location.href = "checkout.html";
+  window.location.href = 'checkout.html';
 }
 
 function initializeGamePage() {
@@ -111,7 +106,7 @@ function initializeGamePage() {
 
   renderGame(selectedGame);
 
-  gameDetail.addEventListener("click", handleProductSelection);
+  gameDetail.addEventListener('click', handleProductSelection);
 }
 
 initializeGamePage();

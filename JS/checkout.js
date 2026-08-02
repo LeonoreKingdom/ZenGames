@@ -1,21 +1,19 @@
-import { findGameById } from "./data/game.js";
+import { findGameById } from './data/games.js';
 
-const checkoutRoot = document.querySelector("#checkout-root");
-const backToGameLink = document.querySelector("#back-to-game");
-const currentYear = document.querySelector("#current-year");
+const checkoutRoot = document.querySelector('#checkout-root');
+const backToGameLink = document.querySelector('#back-to-game');
+const currentYear = document.querySelector('#current-year');
 
 function formatCurrency(amount) {
-  return new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR",
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
     maximumFractionDigits: 0,
   }).format(amount);
 }
 
 function getStoredSelection() {
-  const storedSelection = sessionStorage.getItem(
-    "zengamesSelection",
-  );
+  const storedSelection = sessionStorage.getItem('zengamesSelection');
 
   if (!storedSelection) {
     return null;
@@ -24,15 +22,13 @@ function getStoredSelection() {
   try {
     return JSON.parse(storedSelection);
   } catch (error) {
-    console.error("Invalid checkout selection:", error);
+    console.error('Invalid checkout selection:', error);
     return null;
   }
 }
 
 function findProductById(game, productId) {
-  return game.products.find(
-    (product) => product.id === productId,
-  );
+  return game.products.find((product) => product.id === productId);
 }
 
 function createAccountField(field) {
@@ -47,8 +43,8 @@ function createAccountField(field) {
       <input
         id="${inputId}"
         name="${field.name}"
-        type="${field.type ?? "text"}"
-        placeholder="${field.placeholder ?? ""}"
+        type="${field.type ?? 'text'}"
+        placeholder="${field.placeholder ?? ''}"
         data-account-field="${field.name}"
         required
         autocomplete="off"
@@ -64,8 +60,7 @@ function createAccountField(field) {
 function renderCheckout(game, product) {
   document.title = `${game.name} Checkout | ZenGames`;
 
-  backToGameLink.href =
-    `game.html?game=${encodeURIComponent(game.id)}`;
+  backToGameLink.href = `game.html?game=${encodeURIComponent(game.id)}`;
 
   checkoutRoot.innerHTML = `
     <header class="checkout-heading">
@@ -86,9 +81,7 @@ function renderCheckout(game, product) {
 
         <form id="checkout-form" novalidate>
           <div class="account-fields">
-            ${game.accountFields
-              .map(createAccountField)
-              .join("")}
+            ${game.accountFields.map(createAccountField).join('')}
           </div>
 
           <fieldset class="contact-fieldset">
@@ -183,50 +176,41 @@ function renderCheckout(game, product) {
     </div>
   `;
 
-  const checkoutForm =
-    document.querySelector("#checkout-form");
+  const checkoutForm = document.querySelector('#checkout-form');
 
-  const contactType =
-    document.querySelector("#contact-type");
+  const contactType = document.querySelector('#contact-type');
 
-  contactType.addEventListener(
-    "change",
-    updateContactInput,
-  );
+  contactType.addEventListener('change', updateContactInput);
 
-  checkoutForm.addEventListener("submit", (event) => {
+  checkoutForm.addEventListener('submit', (event) => {
     handleCheckoutSubmit(event, game, product);
   });
 }
 
 function updateContactInput() {
-  const contactType =
-    document.querySelector("#contact-type");
+  const contactType = document.querySelector('#contact-type');
 
-  const contactValue =
-    document.querySelector("#contact-value");
+  const contactValue = document.querySelector('#contact-value');
 
-  if (contactType.value === "phone") {
-    contactValue.type = "tel";
-    contactValue.placeholder = "Example: +628123456789";
-    contactValue.pattern = "[0-9+\\s-]{8,20}";
+  if (contactType.value === 'phone') {
+    contactValue.type = 'tel';
+    contactValue.placeholder = 'Example: +628123456789';
+    contactValue.pattern = '[0-9+\\s-]{8,20}';
     return;
   }
 
-  contactValue.type = "email";
-  contactValue.placeholder = "customer@example.com";
-  contactValue.removeAttribute("pattern");
+  contactValue.type = 'email';
+  contactValue.placeholder = 'customer@example.com';
+  contactValue.removeAttribute('pattern');
 }
 
 function collectAccountData(form) {
   const account = {};
 
-  const accountInputs =
-    form.querySelectorAll("[data-account-field]");
+  const accountInputs = form.querySelectorAll('[data-account-field]');
 
   accountInputs.forEach((input) => {
-    account[input.dataset.accountField] =
-      input.value.trim();
+    account[input.dataset.accountField] = input.value.trim();
   });
 
   return account;
@@ -236,14 +220,12 @@ function handleCheckoutSubmit(event, game, product) {
   event.preventDefault();
 
   const form = event.currentTarget;
-  const formMessage =
-    document.querySelector("#form-message");
+  const formMessage = document.querySelector('#form-message');
 
-  formMessage.textContent = "";
+  formMessage.textContent = '';
 
   if (!form.checkValidity()) {
-    formMessage.textContent =
-      "Please complete all required fields correctly.";
+    formMessage.textContent = 'Please complete all required fields correctly.';
 
     form.reportValidity();
     return;
@@ -257,20 +239,15 @@ function handleCheckoutSubmit(event, game, product) {
     productId: product.id,
     account: collectAccountData(form),
     customer: {
-      contactType: formData.get("contactType"),
-      contactValue: String(
-        formData.get("contactValue"),
-      ).trim(),
+      contactType: formData.get('contactType'),
+      contactValue: String(formData.get('contactValue')).trim(),
     },
     createdAt: new Date().toISOString(),
   };
 
-  sessionStorage.setItem(
-    "zengamesCheckoutDraft",
-    JSON.stringify(checkoutDraft),
-  );
+  sessionStorage.setItem('zengamesCheckoutDraft', JSON.stringify(checkoutDraft));
 
-  window.location.href = "confirmation.html";
+  window.location.href = 'confirmation.html';
 }
 
 function renderUnavailableState(message) {
@@ -288,36 +265,26 @@ function renderUnavailableState(message) {
 }
 
 function initializeCheckout() {
-  currentYear.textContent =
-    new Date().getFullYear();
+  currentYear.textContent = new Date().getFullYear();
 
   const selection = getStoredSelection();
 
   if (!selection) {
-    renderUnavailableState(
-      "Select a game package before opening checkout.",
-    );
+    renderUnavailableState('Select a game package before opening checkout.');
     return;
   }
 
   const game = findGameById(selection.gameId);
 
   if (!game) {
-    renderUnavailableState(
-      "The selected game could not be found.",
-    );
+    renderUnavailableState('The selected game could not be found.');
     return;
   }
 
-  const product = findProductById(
-    game,
-    selection.productId,
-  );
+  const product = findProductById(game, selection.productId);
 
   if (!product) {
-    renderUnavailableState(
-      "The selected package could not be found.",
-    );
+    renderUnavailableState('The selected package could not be found.');
     return;
   }
 

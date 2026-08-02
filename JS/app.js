@@ -1,14 +1,14 @@
-import { games } from "./data/game.js";
+import { games } from './data/games.js';
 
-const exploreButton = document.querySelector("#explore-button");
-const appStatus = document.querySelector("#app-status");
-const currentYear = document.querySelector("#current-year");
-const gameList = document.querySelector("#game-list");
+const exploreButton = document.querySelector('#explore-button');
+const appStatus = document.querySelector('#app-status');
+const currentYear = document.querySelector('#current-year');
+const gameList = document.querySelector('#game-list');
 
 function formatCurrency(amount) {
-  return new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR",
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
     maximumFractionDigits: 0,
   }).format(amount);
 }
@@ -18,9 +18,7 @@ function updateCurrentYear() {
 }
 
 function createGameCard(game) {
-  const startingPrice = Math.min(
-    ...game.products.map((product) => product.price),
-  );
+  const startingPrice = Math.min(...game.products.map((product) => product.price));
 
   return `
     <article class="game-card">
@@ -47,14 +45,14 @@ function createGameCard(game) {
 }
 
 function renderGames() {
-  gameList.innerHTML = games.map(createGameCard).join("");
+  gameList.innerHTML = games.map(createGameCard).join('');
 }
 
 function handleExploreButtonClick() {
-  appStatus.textContent = "Choose one of the available games.";
+  appStatus.textContent = 'Choose one of the available games.';
 
-  document.querySelector("#games").scrollIntoView({
-    behavior: "smooth",
+  document.querySelector('#games').scrollIntoView({
+    behavior: 'smooth',
   });
 }
 
@@ -62,9 +60,9 @@ function initializeApp() {
   updateCurrentYear();
   renderGames();
 
-  exploreButton.addEventListener("click", handleExploreButtonClick);
+  exploreButton.addEventListener('click', handleExploreButtonClick);
 
-  console.log("ZenGames home page initialized.");
+  console.log('ZenGames home page initialized.');
 }
 
 initializeApp();
